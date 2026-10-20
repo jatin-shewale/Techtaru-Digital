@@ -51,7 +51,7 @@ These optional values can be set in `.env`:
 | Variable | Default | Purpose |
 |---|---|---|
 | `GROQ_API_KEY` | Required | Authenticates answer-generation requests to Groq. |
-| `CHAT_MODEL` | `llama-3.3-70b-versatile` | Groq chat model used to generate answers. |
+| `CHAT_MODEL` | `openai/gpt-oss-120b` | Groq-hosted chat model used to generate answers. |
 | `EMBED_MODEL` | `sentence-transformers/all-MiniLM-L6-v2` | Local Sentence Transformers model used for document and question embeddings. |
 | `MIN_SIMILARITY` | `0.25` | Minimum cosine similarity (0 to 1) for a passage to be included as context. Raise it to be more selective; lower it to retrieve more broadly. |
 
@@ -101,6 +101,8 @@ Embeddings stay on the machine. Retrieved passage text and the question are sent
 ## Troubleshooting
 
 **`ModuleNotFoundError` when starting the app**: activate the virtual environment created in `Task1`, then run `python -m pip install -r requirements.txt` from the `Task1` directory.
+
+**Repeated `ModuleNotFoundError: No module named 'torchvision'` messages from Streamlit's watcher**: these can be raised while Streamlit scans optional Transformers image modules, even though this app only uses text embeddings. Task1 disables the file watcher in `.streamlit/config.toml` to prevent those messages. Restart Streamlit manually after editing code.
 
 **`GROQ_API_KEY is not set`**: check that `Task1/.env` exists and contains `GROQ_API_KEY` with a valid key. Restart Streamlit after editing it.
 

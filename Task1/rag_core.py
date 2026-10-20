@@ -25,7 +25,7 @@ load_dotenv()
 log = logging.getLogger("rag")
 
 EMBED_MODEL = os.getenv("EMBED_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
-CHAT_MODEL = os.getenv("CHAT_MODEL", "llama-3.3-70b-versatile")
+CHAT_MODEL = os.getenv("CHAT_MODEL", "openai/gpt-oss-120b")
 MIN_SIMILARITY = float(os.getenv("MIN_SIMILARITY", "0.25"))
 MAX_QUESTION_CHARS = 2000
 NO_ANSWER = "I couldn't find that in the document."
